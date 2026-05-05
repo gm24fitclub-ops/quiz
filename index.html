@@ -345,7 +345,7 @@
 
 <script>
   // TODO: Кога ќе го направиме Google Apps Script, тука ќе го ставиш Web App URL-то.
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7yMkSaS0aH45g-fYjwpZMKGR0CtdUK-hvnHvexw_XNRot_VK68RBRgOEwMSHT0sLjEQ/exec";
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyzdsCmakmnCqBsrEVzMhtToV3ThX-fFEy8kGvhXmvFGXGmQzstAZ7VyJ0I6y-_-h89Aw/exec";
 
   const questions = [
     {
@@ -628,8 +628,19 @@
     }
 
     try{
+      const flat = {
+        createdAt: payload.createdAt,
+        name: payload.name,
+        phone: payload.phone,
+        instagram: payload.instagram,
+        email: payload.email,
+        note: payload.note,
+        score: payload.score,
+        result: payload.result
+      };
+      Object.entries(payload.answers).forEach(([k,v]) => { flat['ans_'+k] = v; });
       const form = new FormData();
-      Object.keys(payload).forEach(k => form.append(k, payload[k]));
+      Object.entries(flat).forEach(([k,v]) => form.append(k, v ?? ''));
       await fetch(GOOGLE_SCRIPT_URL, {
         method:'POST',
         mode:'no-cors',
