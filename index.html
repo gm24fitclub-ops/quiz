@@ -20,7 +20,7 @@
       --danger:#b42318;
       --radius:24px;
     }
-
+ 
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -28,7 +28,7 @@
       background:radial-gradient(circle at top left,#e5ffc5 0,#f6faf3 36%,#ffffff 100%);
       color:var(--black);
     }
-
+ 
     .page{
       min-height:100vh;
       display:flex;
@@ -36,7 +36,7 @@
       align-items:center;
       padding:22px;
     }
-
+ 
     .shell{
       width:100%;
       max-width:920px;
@@ -46,13 +46,13 @@
       box-shadow:0 24px 80px rgba(16,22,20,.12);
       overflow:hidden;
     }
-
+ 
     .hero{
       padding:34px 28px 24px;
       background:linear-gradient(135deg,var(--green),var(--teal));
       color:white;
     }
-
+ 
     .badge{
       display:inline-flex;
       gap:8px;
@@ -65,7 +65,7 @@
       font-size:13px;
       margin-bottom:16px;
     }
-
+ 
     h1{
       margin:0;
       font-size:clamp(30px,5vw,54px);
@@ -73,7 +73,7 @@
       letter-spacing:-1.6px;
       font-weight:900;
     }
-
+ 
     .hero p{
       margin:14px 0 0;
       max-width:760px;
@@ -81,16 +81,16 @@
       line-height:1.55;
       opacity:.94;
     }
-
+ 
     .content{padding:26px 28px 30px}
-
+ 
     .progress-wrap{
       display:flex;
       align-items:center;
       gap:12px;
       margin-bottom:22px;
     }
-
+ 
     .progress{
       flex:1;
       height:10px;
@@ -98,7 +98,7 @@
       border-radius:999px;
       overflow:hidden;
     }
-
+ 
     .bar{
       width:0%;
       height:100%;
@@ -106,7 +106,7 @@
       border-radius:999px;
       transition:.25s ease;
     }
-
+ 
     .step-count{
       font-weight:800;
       color:var(--green);
@@ -114,7 +114,7 @@
       min-width:72px;
       text-align:right;
     }
-
+ 
     .card{
       background:var(--white);
       border:1px solid #e7eee8;
@@ -122,7 +122,7 @@
       padding:24px;
       box-shadow:0 10px 28px rgba(16,22,20,.06);
     }
-
+ 
     .question-kicker{
       color:var(--teal);
       font-size:13px;
@@ -131,7 +131,7 @@
       letter-spacing:.8px;
       margin-bottom:8px;
     }
-
+ 
     .question-title{
       font-size:clamp(22px,3vw,32px);
       font-weight:900;
@@ -139,12 +139,12 @@
       margin:0 0 18px;
       letter-spacing:-.8px;
     }
-
+ 
     .options{
       display:grid;
       gap:12px;
     }
-
+ 
     .option{
       display:flex;
       align-items:flex-start;
@@ -158,10 +158,10 @@
       font-weight:700;
       line-height:1.35;
     }
-
+ 
     .option:hover{border-color:var(--green2);transform:translateY(-1px)}
     .option.selected{border-color:var(--green);background:#f2fbef;box-shadow:0 8px 20px rgba(38,100,49,.08)}
-
+ 
     .dot{
       width:22px;
       height:22px;
@@ -176,7 +176,7 @@
       content:"";
       width:8px;height:8px;background:#fff;border-radius:50%;position:absolute;top:5px;left:5px;
     }
-
+ 
     .input{
       width:100%;
       padding:16px;
@@ -188,14 +188,14 @@
     }
     .input:focus{border-color:var(--green2);box-shadow:0 0 0 4px rgba(66,160,70,.12)}
     textarea.input{min-height:120px;resize:vertical}
-
+ 
     .actions{
       display:flex;
       justify-content:space-between;
       gap:12px;
       margin-top:20px;
     }
-
+ 
     button{
       border:0;
       border-radius:16px;
@@ -206,40 +206,40 @@
       transition:.18s ease;
       font-size:15px;
     }
-
+ 
     .btn-secondary{background:#eef4ee;color:var(--green)}
     .btn-primary{background:linear-gradient(135deg,var(--green),var(--green2));color:white;box-shadow:0 12px 24px rgba(38,100,49,.22)}
     button:hover{transform:translateY(-1px)}
     button:disabled{opacity:.45;cursor:not-allowed;transform:none}
-
+ 
     .microcopy{
       margin-top:14px;
       font-size:13px;
       color:var(--gray);
       line-height:1.45;
     }
-
+ 
     .result{
       display:none;
     }
-
+ 
     .score-box{
       display:grid;
       grid-template-columns:1fr;
       gap:14px;
       margin:18px 0;
     }
-
+ 
     .score-card{
       background:#f6faf3;
       border:1px solid #dfeadd;
       border-radius:20px;
       padding:18px;
     }
-
+ 
     .score-card strong{display:block;font-size:19px;margin-bottom:6px;color:var(--green)}
     .score-card p{margin:0;color:#33413a;line-height:1.5}
-
+ 
     .cta-box{
       margin-top:18px;
       padding:20px;
@@ -249,14 +249,14 @@
     }
     .cta-box h3{margin:0 0 8px;font-size:24px;letter-spacing:-.5px}
     .cta-box p{margin:0 0 14px;line-height:1.5;opacity:.93}
-
+ 
     .contact-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:12px;
       margin-top:14px;
     }
-
+ 
     .error{
       display:none;
       color:var(--danger);
@@ -264,7 +264,7 @@
       font-weight:800;
       margin-top:10px;
     }
-
+ 
     .success{
       display:none;
       padding:14px;
@@ -274,7 +274,7 @@
       font-weight:800;
       margin-top:14px;
     }
-
+ 
     @media(max-width:700px){
       .page{padding:12px;align-items:flex-start}
       .shell{border-radius:24px}
@@ -295,34 +295,34 @@
         <h1>Колку навистина имаш контрола над телото, енергијата и навиките?</h1>
         <p>Овој краток квиз ќе ти покаже каде моментално губиш енергија, дисциплина и потенцијал — и кој е следниот чекор ако сакаш подобар животен стил, подобра форма и поголема лична вредност.</p>
       </div>
-
+ 
       <div class="content">
         <div id="quizArea">
           <div class="progress-wrap">
             <div class="progress"><div class="bar" id="bar"></div></div>
             <div class="step-count" id="stepCount">1 / 11</div>
           </div>
-
+ 
           <div class="card">
             <div class="question-kicker" id="kicker">Навики</div>
             <h2 class="question-title" id="questionTitle"></h2>
             <div id="questionBody"></div>
             <div class="error" id="errorMsg">Избери одговор за да продолжиш.</div>
             <p class="microcopy" id="microcopy"></p>
-
+ 
             <div class="actions">
               <button class="btn-secondary" id="prevBtn" onclick="prevQuestion()">Назад</button>
               <button class="btn-primary" id="nextBtn" onclick="nextQuestion()">Следно</button>
             </div>
           </div>
         </div>
-
+ 
         <div class="result" id="resultArea">
           <div class="card">
             <div class="question-kicker">Твој резултат</div>
             <h2 class="question-title" id="resultTitle"></h2>
             <div class="score-box" id="resultText"></div>
-
+ 
             <div class="cta-box">
               <h3>Сакаш персонализиран следен чекор?</h3>
               <p>Остави контакт и ќе ти пратам кратка анализа: каде најмногу губиш контрола и што би направил прво во следните 10–14 дена.</p>
@@ -342,11 +342,11 @@
       </div>
     </section>
   </main>
-
+ 
 <script>
   // TODO: Кога ќе го направиме Google Apps Script, тука ќе го ставиш Web App URL-то.
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmBCTkI-UoQrw-1y-xrRocbkiEC9f0Bo3rleecq_-X9bvzDo9uy9pwIZIyQbFKCWEqpg/exec";
-
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvNtxtOvP8s5MTGgoLghUIRjps8v-FnH1cutoGRJSz6FpGi3FB4EcEM1BQ6QWAtM00FQ/exec";
+ 
   const questions = [
     {
       key:"breakfast",
@@ -481,10 +481,10 @@
       placeholder:"Напиши ја твојата цел..."
     }
   ];
-
+ 
   let current = 0;
   const answers = {};
-
+ 
   function renderQuestion(){
     const q = questions[current];
     document.getElementById('kicker').textContent = q.category;
@@ -493,10 +493,10 @@
     document.getElementById('stepCount').textContent = `${current + 1} / ${questions.length}`;
     document.getElementById('bar').style.width = `${((current + 1) / questions.length) * 100}%`;
     document.getElementById('errorMsg').style.display = 'none';
-
+ 
     const body = document.getElementById('questionBody');
     body.innerHTML = '';
-
+ 
     if(q.type === 'choice'){
       const options = document.createElement('div');
       options.className = 'options';
@@ -521,11 +521,11 @@
       };
       body.appendChild(textarea);
     }
-
+ 
     document.getElementById('prevBtn').disabled = current === 0;
     document.getElementById('nextBtn').textContent = current === questions.length - 1 ? 'Види резултат' : 'Следно';
   }
-
+ 
   function validateCurrent(){
     const q = questions[current];
     const a = answers[q.key];
@@ -535,7 +535,7 @@
     }
     return true;
   }
-
+ 
   function nextQuestion(){
     if(!validateCurrent()) return;
     if(current < questions.length - 1){
@@ -545,18 +545,18 @@
       showResult();
     }
   }
-
+ 
   function prevQuestion(){
     if(current > 0){
       current--;
       renderQuestion();
     }
   }
-
+ 
   function getScore(){
     return Object.values(answers).reduce((sum,a)=>sum + (Number(a.score) || 0),0);
   }
-
+ 
   function getResultData(score){
     if(score <= 12){
       return {
@@ -578,7 +578,7 @@
       text:'Веќе имаш дел од навиките. Сега треба да ги подигнеш на повисоко ниво — подобра исхрана, јасна рутина и можеби систем преку кој твојата трансформација може да стане вредност и за други луѓе.'
     };
   }
-
+ 
   function showResult(){
     const score = getScore();
     const data = getResultData(score);
@@ -590,7 +590,7 @@
       <div class="score-card"><strong>Твој score: ${score}</strong><p>Ова не е дијагноза. Ова е брза насока каде моментално стоиш со навики, енергија, дисциплина и openness за раст.</p></div>
     `;
   }
-
+ 
   async function submitLead(){
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
@@ -599,15 +599,15 @@
     const note = document.getElementById('note').value.trim();
     const submitError = document.getElementById('submitError');
     const successMsg = document.getElementById('successMsg');
-
+ 
     submitError.style.display = 'none';
     successMsg.style.display = 'none';
-
+ 
     if(!name || (!phone && !instagram)){
       submitError.style.display = 'block';
       return;
     }
-
+ 
     const payload = {
       createdAt: new Date().toISOString(),
       name,
@@ -619,32 +619,19 @@
       result: getResultData(getScore()).level,
       answers: Object.fromEntries(Object.entries(answers).map(([k,v]) => [k, v.value]))
     };
-
+ 
     // Ако Google Script URL не е поставен, за тест само ќе прикаже успех и ќе го испечати payload во Console.
     if(!GOOGLE_SCRIPT_URL){
       console.log('Lead payload:', payload);
       successMsg.style.display = 'block';
       return;
     }
-
+ 
     try{
-      const flat = {
-        createdAt: payload.createdAt,
-        name: payload.name,
-        phone: payload.phone,
-        instagram: payload.instagram,
-        email: payload.email,
-        note: payload.note,
-        score: payload.score,
-        result: payload.result
-      };
-      Object.entries(payload.answers).forEach(([k,v]) => { flat['ans_'+k] = v; });
-      const form = new FormData();
-      Object.entries(flat).forEach(([k,v]) => form.append(k, v ?? ''));
       await fetch(GOOGLE_SCRIPT_URL, {
         method:'POST',
         mode:'no-cors',
-        body:form
+        body: JSON.stringify(payload)
       });
       successMsg.style.display = 'block';
     }catch(error){
@@ -653,7 +640,7 @@
       submitError.style.display = 'block';
     }
   }
-
+ 
   renderQuestion();
 </script>
 </body>
