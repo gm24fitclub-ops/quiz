@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lifestyle Reset Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:#266431;
+      --green2:#42a046;
+      --teal:#3b9187;
+      --soft:#e5ffc5;
+      --black:#101614;
+      --gray:#68736d;
+      --light:#f6faf3;
+      --white:#ffffff;
+      --danger:#b42318;
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:radial-gradient(circle at top left,#e5ffc5 0,#f6faf3 36%,#ffffff 100%);
+      color:var(--black);
+    }
+
+    .page{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:22px;
+    }
+
+    .shell{
+      width:100%;
+      max-width:920px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(38,100,49,.12);
+      border-radius:32px;
+      box-shadow:0 24px 80px rgba(16,22,20,.12);
+      overflow:hidden;
+    }
+
+    .hero{
+      padding:34px 28px 24px;
+      background:linear-gradient(135deg,var(--green),var(--teal));
+      color:white;
+    }
+
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.22);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px;
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(30px,5vw,54px);
+      line-height:1.02;
+      letter-spacing:-1.6px;
+      font-weight:900;
+    }
+
+    .hero p{
+      margin:14px 0 0;
+      max-width:760px;
+      font-size:17px;
+      line-height:1.55;
+      opacity:.94;
+    }
+
+    .content{padding:26px 28px 30px}
+
+    .progress-wrap{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:22px;
+    }
+
+    .progress{
+      flex:1;
+      height:10px;
+      background:#e9efe9;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .bar{
+      width:0%;
+      height:100%;
+      background:linear-gradient(90deg,var(--green2),var(--teal));
+      border-radius:999px;
+      transition:.25s ease;
+    }
+
+    .step-count{
+      font-weight:800;
+      color:var(--green);
+      font-size:13px;
+      min-width:72px;
+      text-align:right;
+    }
+
+    .card{
+      background:var(--white);
+      border:1px solid #e7eee8;
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:0 10px 28px rgba(16,22,20,.06);
+    }
+
+    .question-kicker{
+      color:var(--teal);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+      margin-bottom:8px;
+    }
+
+    .question-title{
+      font-size:clamp(22px,3vw,32px);
+      font-weight:900;
+      line-height:1.12;
+      margin:0 0 18px;
+      letter-spacing:-.8px;
+    }
+
+    .options{
+      display:grid;
+      gap:12px;
+    }
+
+    .option{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:16px;
+      border:1.5px solid #e3ece5;
+      border-radius:18px;
+      cursor:pointer;
+      transition:.18s ease;
+      background:#fff;
+      font-weight:700;
+      line-height:1.35;
+    }
+
+    .option:hover{border-color:var(--green2);transform:translateY(-1px)}
+    .option.selected{border-color:var(--green);background:#f2fbef;box-shadow:0 8px 20px rgba(38,100,49,.08)}
+
+    .dot{
+      width:22px;
+      height:22px;
+      border-radius:50%;
+      border:2px solid #b8c7bc;
+      flex:0 0 22px;
+      margin-top:-1px;
+      position:relative;
+    }
+    .selected .dot{border-color:var(--green);background:var(--green)}
+    .selected .dot:after{
+      content:"";
+      width:8px;height:8px;background:#fff;border-radius:50%;position:absolute;top:5px;left:5px;
+    }
+
+    .input{
+      width:100%;
+      padding:16px;
+      border:1.5px solid #dce7de;
+      border-radius:16px;
+      font-size:16px;
+      font-family:inherit;
+      outline:none;
+    }
+    .input:focus{border-color:var(--green2);box-shadow:0 0 0 4px rgba(66,160,70,.12)}
+    textarea.input{min-height:120px;resize:vertical}
+
+    .actions{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    button{
+      border:0;
+      border-radius:16px;
+      padding:14px 18px;
+      font-family:inherit;
+      font-weight:900;
+      cursor:pointer;
+      transition:.18s ease;
+      font-size:15px;
+    }
+
+    .btn-secondary{background:#eef4ee;color:var(--green)}
+    .btn-primary{background:linear-gradient(135deg,var(--green),var(--green2));color:white;box-shadow:0 12px 24px rgba(38,100,49,.22)}
+    button:hover{transform:translateY(-1px)}
+    button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+    .microcopy{
+      margin-top:14px;
+      font-size:13px;
+      color:var(--gray);
+      line-height:1.45;
+    }
+
+    .result{
+      display:none;
+    }
+
+    .score-box{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin:18px 0;
+    }
+
+    .score-card{
+      background:#f6faf3;
+      border:1px solid #dfeadd;
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .score-card strong{display:block;font-size:19px;margin-bottom:6px;color:var(--green)}
+    .score-card p{margin:0;color:#33413a;line-height:1.5}
+
+    .cta-box{
+      margin-top:18px;
+      padding:20px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#101614,#266431);
+      color:white;
+    }
+    .cta-box h3{margin:0 0 8px;font-size:24px;letter-spacing:-.5px}
+    .cta-box p{margin:0 0 14px;line-height:1.5;opacity:.93}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .error{
+      display:none;
+      color:var(--danger);
+      font-size:13px;
+      font-weight:800;
+      margin-top:10px;
+    }
+
+    .success{
+      display:none;
+      padding:14px;
+      border-radius:16px;
+      background:#edfbea;
+      color:#1f6b2f;
+      font-weight:800;
+      margin-top:14px;
+    }
+
+    @media(max-width:700px){
+      .page{padding:12px;align-items:flex-start}
+      .shell{border-radius:24px}
+      .hero{padding:28px 20px 22px}
+      .content{padding:20px}
+      .card{padding:20px}
+      .contact-grid{grid-template-columns:1fr}
+      .actions{position:sticky;bottom:10px;background:rgba(255,255,255,.92);padding:10px;border-radius:18px;backdrop-filter:blur(10px)}
+      button{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="shell">
+      <div class="hero">
+        <div class="badge">⚡ 2 минути анализа</div>
+        <h1>Колку навистина имаш контрола над телото, енергијата и навиките?</h1>
+        <p>Овој краток квиз ќе ти покаже каде моментално губиш енергија, дисциплина и потенцијал — и кој е следниот чекор ако сакаш подобар животен стил, подобра форма и поголема лична вредност.</p>
+      </div>
+
+      <div class="content">
+        <div id="quizArea">
+          <div class="progress-wrap">
+            <div class="progress"><div class="bar" id="bar"></div></div>
+            <div class="step-count" id="stepCount">1 / 11</div>
+          </div>
+
+          <div class="card">
+            <div class="question-kicker" id="kicker">Навики</div>
+            <h2 class="question-title" id="questionTitle"></h2>
+            <div id="questionBody"></div>
+            <div class="error" id="errorMsg">Избери одговор за да продолжиш.</div>
+            <p class="microcopy" id="microcopy"></p>
+
+            <div class="actions">
+              <button class="btn-secondary" id="prevBtn" onclick="prevQuestion()">Назад</button>
+              <button class="btn-primary" id="nextBtn" onclick="nextQuestion()">Следно</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="result" id="resultArea">
+          <div class="card">
+            <div class="question-kicker">Твој резултат</div>
+            <h2 class="question-title" id="resultTitle"></h2>
+            <div class="score-box" id="resultText"></div>
+
+            <div class="cta-box">
+              <h3>Сакаш персонализиран следен чекор?</h3>
+              <p>Остави контакт и ќе ти пратам кратка анализа: каде најмногу губиш контрола и што би направил прво во следните 10–14 дена.</p>
+              <div class="contact-grid">
+                <input class="input" id="name" placeholder="Име" />
+                <input class="input" id="phone" placeholder="Телефон / Viber / WhatsApp" />
+                <input class="input" id="instagram" placeholder="Instagram username" />
+                <input class="input" id="email" placeholder="Email (опционално)" />
+              </div>
+              <textarea class="input" id="note" style="margin-top:12px" placeholder="Што најмногу сакаш да подобриш моментално?"></textarea>
+              <button class="btn-primary" style="margin-top:14px;width:100%" onclick="submitLead()">Испрати резултат</button>
+              <div class="success" id="successMsg">Готово. Резултатот е зачуван. Ќе те контактирам со следен чекор.</div>
+              <div class="error" id="submitError">Внеси барем име и телефон или Instagram.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script>
+  // TODO: Кога ќе го направиме Google Apps Script, тука ќе го ставиш Web App URL-то.
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypjqOV5hrVUyNH3ZQzG21QLVzO4tgBELwyb1LjWS8yLYb89N-hma2p8jcNk6MUhBjYKg/exec";
+
+  const questions = [
+    {
+      key:"breakfast",
+      category:"Исхрана",
+      title:"Како изгледа твојот појадок најчесто?",
+      micro:"Првиот оброк често го поставува темпото за енергија, глад и дисциплина преку ден.",
+      type:"choice",
+      options:[
+        {text:"Прескокнувам појадок", score:0},
+        {text:"Брзо нешто — пециво, бурек, благо, кафе", score:1},
+        {text:"Зависи од денот, немам структура", score:2},
+        {text:"Имам планиран и балансиран појадок", score:4}
+      ]
+    },
+    {
+      key:"energy",
+      category:"Енергија",
+      title:"Колку често имаш пад на енергија во текот на денот?",
+      micro:"Падот на енергија не е случаен. Најчесто е сигнал дека телото нема стабилна рутина.",
+      type:"choice",
+      options:[
+        {text:"Секој ден", score:0},
+        {text:"Често", score:1},
+        {text:"Понекогаш", score:2},
+        {text:"Ретко или никогаш", score:4}
+      ]
+    },
+    {
+      key:"cravings",
+      category:"Контрола",
+      title:"Кога ќе ти дојде желба за благо или грицки...",
+      micro:"Ова прашање покажува дали ти ја водиш навиката — или навиката те води тебе.",
+      type:"choice",
+      options:[
+        {text:"Речиси секогаш попуштам", score:0},
+        {text:"Често попуштам", score:1},
+        {text:"Зависи од денот", score:2},
+        {text:"Имам добра контрола", score:4}
+      ]
+    },
+    {
+      key:"training",
+      category:"Дисциплина",
+      title:"Колку си конзистентен со тренинг или движење?",
+      micro:"Не мора да биде совршено. Но мора да има повторување.",
+      type:"choice",
+      options:[
+        {text:"Почнувам, па брзо се откажувам", score:0},
+        {text:"Вежбам само кога имам мотивација", score:1},
+        {text:"Имам некаква рутина, ама не е стабилна", score:2},
+        {text:"Имам јасна неделна структура", score:4}
+      ]
+    },
+    {
+      key:"selfInvestment",
+      category:"Личен раст",
+      title:"Колку време дневно инвестираш во себе — здравје, движење, учење, развој?",
+      micro:"Вистината е едноставна: ако не инвестираш во себе, не можеш да очекуваш животот сам да се подобри.",
+      type:"choice",
+      options:[
+        {text:"0 минути", score:0},
+        {text:"Помалку од 20 минути", score:1},
+        {text:"20–40 минути", score:2},
+        {text:"1+ час", score:4}
+      ]
+    },
+    {
+      key:"moneyHabits",
+      category:"Финансиски mindset",
+      title:"Дали веруваш дека твоите навики директно влијаат на твоите приходи?",
+      micro:"Телото, времето и парите најчесто не се одвоени проблеми. Сите зависат од дисциплина, средина и систем.",
+      type:"choice",
+      options:[
+        {text:"Не", score:0},
+        {text:"Не сум сигурен/сигурна", score:1},
+        {text:"Делумно", score:2},
+        {text:"Да, 100%", score:4}
+      ]
+    },
+    {
+      key:"bodySatisfaction",
+      category:"Форма",
+      title:"Колку си задоволен/задоволна од моменталната физичка форма?",
+      micro:"Не е поентата да се осудуваш. Поентата е да бидеш искрен/искрена и да видиш што треба да се смени.",
+      type:"choice",
+      options:[
+        {text:"Воопшто не сум задоволен/задоволна", score:0},
+        {text:"Делумно", score:1},
+        {text:"Ок е, ама знам дека можам подобро", score:2},
+        {text:"Многу сум задоволен/задоволна", score:4}
+      ]
+    },
+    {
+      key:"future",
+      category:"Иднина",
+      title:"Ако ништо не смениш, каде реално ќе бидеш за 1 година?",
+      micro:"Ова е прашањето што многу луѓе го избегнуваат. Но токму ова носи одлука.",
+      type:"choice",
+      options:[
+        {text:"Исто или полошо", score:0},
+        {text:"Малку подобро, ама без голема промена", score:1},
+        {text:"Не знам", score:2},
+        {text:"Значително подобро, затоа што веќе имам план", score:4}
+      ]
+    },
+    {
+      key:"opportunity",
+      category:"Можност",
+      title:"Дали би бил/а отворен/а да научиш систем што може да ти помогне да изгледаш подобро, имаш повеќе енергија и потенцијално да заработуваш од тоа?",
+      micro:"Ова не е прашање дали мораш нешто да правиш. Прашањето е дали си отворен/отворена за нова можност.",
+      type:"choice",
+      options:[
+        {text:"Не", score:0},
+        {text:"Можеби, ако ми има логика", score:2},
+        {text:"Да, сакам да слушнам повеќе", score:4}
+      ]
+    },
+    {
+      key:"mainProblem",
+      category:"Главен проблем",
+      title:"Што ти е најголем проблем моментално?",
+      micro:"Напиши реално. Ова е најважниот дел за персонализирана анализа.",
+      type:"text",
+      placeholder:"Пример: немам енергија, немам дисциплина, сакам да ослабам, сакам дополнителен приход..."
+    },
+    {
+      key:"goal",
+      category:"Цел",
+      title:"Која промена најмногу ја сакаш во следните 30 дена?",
+      micro:"Колку е појасна целта, толку е полесно да се направи план.",
+      type:"text",
+      placeholder:"Напиши ја твојата цел..."
+    }
+  ];
+
+  let current = 0;
+  const answers = {};
+
+  function renderQuestion(){
+    const q = questions[current];
+    document.getElementById('kicker').textContent = q.category;
+    document.getElementById('questionTitle').textContent = q.title;
+    document.getElementById('microcopy').textContent = q.micro || '';
+    document.getElementById('stepCount').textContent = `${current + 1} / ${questions.length}`;
+    document.getElementById('bar').style.width = `${((current + 1) / questions.length) * 100}%`;
+    document.getElementById('errorMsg').style.display = 'none';
+
+    const body = document.getElementById('questionBody');
+    body.innerHTML = '';
+
+    if(q.type === 'choice'){
+      const options = document.createElement('div');
+      options.className = 'options';
+      q.options.forEach((opt, index)=>{
+        const div = document.createElement('div');
+        div.className = 'option' + (answers[q.key]?.index === index ? ' selected' : '');
+        div.onclick = () => {
+          answers[q.key] = { value: opt.text, score: opt.score, index };
+          renderQuestion();
+        };
+        div.innerHTML = `<span class="dot"></span><span>${opt.text}</span>`;
+        options.appendChild(div);
+      });
+      body.appendChild(options);
+    } else {
+      const textarea = document.createElement('textarea');
+      textarea.className = 'input';
+      textarea.placeholder = q.placeholder || '';
+      textarea.value = answers[q.key]?.value || '';
+      textarea.oninput = (e)=>{
+        answers[q.key] = { value:e.target.value, score:0 };
+      };
+      body.appendChild(textarea);
+    }
+
+    document.getElementById('prevBtn').disabled = current === 0;
+    document.getElementById('nextBtn').textContent = current === questions.length - 1 ? 'Види резултат' : 'Следно';
+  }
+
+  function validateCurrent(){
+    const q = questions[current];
+    const a = answers[q.key];
+    if(!a || !String(a.value || '').trim()){
+      document.getElementById('errorMsg').style.display = 'block';
+      return false;
+    }
+    return true;
+  }
+
+  function nextQuestion(){
+    if(!validateCurrent()) return;
+    if(current < questions.length - 1){
+      current++;
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function prevQuestion(){
+    if(current > 0){
+      current--;
+      renderQuestion();
+    }
+  }
+
+  function getScore(){
+    return Object.values(answers).reduce((sum,a)=>sum + (Number(a.score) || 0),0);
+  }
+
+  function getResultData(score){
+    if(score <= 12){
+      return {
+        title:'Моментално ти фали систем, не мотивација.',
+        level:'Критична зона',
+        text:'Имаш неколку навики што ти ја крадат енергијата и контролата. Добрата вест е дека ова најбрзо се подобрува кога ќе добиеш едноставна структура за појадок, оброци, движење и дневна рутина.'
+      };
+    }
+    if(score <= 24){
+      return {
+        title:'Имаш потенцијал, ама немаш доволно стабилност.',
+        level:'Променлива зона',
+        text:'Не си далеку. Проблемот е што веројатно почнуваш добро, па губиш ритам. Со правилен план и поддршка можеш брзо да добиеш повеќе енергија, подобра форма и подобра контрола.'
+      };
+    }
+    return {
+      title:'Имаш добра основа. Следниот чекор е оптимизација.',
+      level:'Зона на раст',
+      text:'Веќе имаш дел од навиките. Сега треба да ги подигнеш на повисоко ниво — подобра исхрана, јасна рутина и можеби систем преку кој твојата трансформација може да стане вредност и за други луѓе.'
+    };
+  }
+
+  function showResult(){
+    const score = getScore();
+    const data = getResultData(score);
+    document.getElementById('quizArea').style.display = 'none';
+    document.getElementById('resultArea').style.display = 'block';
+    document.getElementById('resultTitle').textContent = data.title;
+    document.getElementById('resultText').innerHTML = `
+      <div class="score-card"><strong>${data.level}</strong><p>${data.text}</p></div>
+      <div class="score-card"><strong>Твој score: ${score}</strong><p>Ова не е дијагноза. Ова е брза насока каде моментално стоиш со навики, енергија, дисциплина и openness за раст.</p></div>
+    `;
+  }
+
+  async function submitLead(){
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const instagram = document.getElementById('instagram').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const note = document.getElementById('note').value.trim();
+    const submitError = document.getElementById('submitError');
+    const successMsg = document.getElementById('successMsg');
+
+    submitError.style.display = 'none';
+    successMsg.style.display = 'none';
+
+    if(!name || (!phone && !instagram)){
+      submitError.style.display = 'block';
+      return;
+    }
+
+    const payload = {
+      createdAt: new Date().toISOString(),
+      name,
+      phone,
+      instagram,
+      email,
+      note,
+      score: getScore(),
+      result: getResultData(getScore()).level,
+      answers: Object.fromEntries(Object.entries(answers).map(([k,v]) => [k, v.value]))
+    };
+
+    // Ако Google Script URL не е поставен, за тест само ќе прикаже успех и ќе го испечати payload во Console.
+    if(!GOOGLE_SCRIPT_URL){
+      console.log('Lead payload:', payload);
+      successMsg.style.display = 'block';
+      return;
+    }
+
+    try{
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      });
+      successMsg.style.display = 'block';
+    }catch(error){
+      console.error(error);
+      submitError.textContent = 'Има технички проблем. Обиди се повторно или пиши ми директно.';
+      submitError.style.display = 'block';
+    }
+  }
+
+  renderQuestion();
+</script>
+</body>
+</html>
